@@ -6,9 +6,8 @@ import { apiRouter } from './router/api.js';
 
 const corsOptions = {
     credentials: true,
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:' + env.CLIENT_PORT,
 };
-
 const helmetOptions = {
     crossOriginResourcePolicy: false,
 };
@@ -17,7 +16,6 @@ const app = express();
 
 app.use(cors(corsOptions));
 app.use(helmet(helmetOptions));
-
 app.use('/api', apiRouter);
 
 app.all('*', (req, res) => {
@@ -28,12 +26,12 @@ app.all('*', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    return res.status(404).send("Sorry can't find that!")
+    return res.status(404).send("Sorry can't find that!");
 });
 
 app.use((err, req, res, next) => {
-    console.error(err.stack)
-    return res.status(500).send('Something broke!')
+    console.error(err.stack);
+    return res.status(500).send('Something broke!');
 });
 
 app.listen(env.SERVER_PORT, () => {

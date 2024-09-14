@@ -8,9 +8,18 @@ export function LocationListing() {
 
     useEffect(() => {
         fetch('http://localhost:5040/api/locations')
-        .then(res => res.json())
-        .then(data => console.log(data));
-    });
+            .then(res => res.json())
+            .then(obj => {
+                if (typeof obj !== 'object') {
+                    throw new Error('Is serverio atejo ne objektas');
+                } else {
+                    setLocations(obj.data);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    }, []);
 
     return (
         <>

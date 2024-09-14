@@ -1,5 +1,5 @@
 import { connection } from '../../db.js';
-import express from 'express';
+import express from 'express'
 
 export const locationsAPIrouter = express.Router();
 
