@@ -1,15 +1,29 @@
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 import { env } from './env.js';
 import { apiRouter } from './router/api.js';
 
+const corsOptions = {
+    credentials: true,
+    origin: 'http://localhost:5173',
+};
+
+const helmetOptions = {
+    crossOriginResourcePolicy: false,
+};
+
 const app = express();
+
+app.use(cors(corsOptions));
+app.use(helmet(helmetOptions));
 
 app.use('/api', apiRouter);
 
 app.all('*', (req, res) => {
     return res.json({
         status: 'error',
-        msg: 'ne ten pataikei :P',
+        msg: 'Ne ten pataikei :P',
     });
 });
 
