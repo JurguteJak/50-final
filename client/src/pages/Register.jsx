@@ -36,8 +36,19 @@ export function Register() {
         setPasswordError(passwordError);
 
         if (!usernameError && !passwordError) {
-            console.log('siunciame duomenis i serveri registracijai...');
-        }
+
+          fetch('http://localhost:5040/api/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'applications/json',
+            },
+            body: JSON.stringify({
+            username,
+            password,
+            }),
+        });
+
+      }
     }
 
     return (
