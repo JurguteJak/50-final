@@ -11,7 +11,7 @@ export function isValidUsername(text) {
     }
 
     if (text.length > maxLength) {
-        return `Slapyvardis turi buti maximum ${maxLength} simboliu ilgio`;
+        return `Slapyvardis turi buti maximum ${minLength} simboliu ilgio`;
     }
 
     return '';
@@ -22,15 +22,15 @@ export function isValidPassword(text) {
     const maxLength = 100;
 
     if (typeof text !== 'string') {
-        return 'Slaptažodis turi buti tekstinis';
+        return 'Slaptazodis turi buti tekstinis';
     }
 
     if (text.length < minLength) {
-        return `Slaptažodis turi buti minimum ${minLength} simboliu ilgio`;
+        return `Slaptazodis turi buti minimum ${minLength} simboliu ilgio`;
     }
 
     if (text.length > maxLength) {
-        return `Slaptažodis turi buti maximum ${maxLength} simboliu ilgio`;
+        return `Slaptazodis turi buti maximum ${minLength} simboliu ilgio`;
     }
 
     return '';
