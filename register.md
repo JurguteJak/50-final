@@ -35,8 +35,10 @@
     - pavyko uzregistruoti
     - nepavyko uzregistruoti
 
+# -----------------------------------------------------
+
 11. klientas gauna rezultata
 
 12. klientas atvaizduoja pranesima:
-    - pavyko uzsiregistruoti
-    - nepavyko uzsiregistruoti
+    -   pavyko uzsiregistruoti
+    -   nepavyko uzsiregistruoti

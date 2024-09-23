@@ -20,7 +20,7 @@ async function postRegister(req, res) {
     ) {
         return res.json({
             status: 'error',
-            data: 'Pagrindinis duomenu tipas turi buti objektas',
+            msg: 'Pagrindinis duomenu tipas turi buti objektas',
         });
     }
 
@@ -55,20 +55,20 @@ async function postRegister(req, res) {
         const sql = 'SELECT username FROM users WHERE username = ?;';
         const result = await connection.execute(sql, [username]);
 
-        console.log(result);
         if (result[0].length !== 0) {
             return res.json({
                 status: 'error',
-                data: ' Tokiu slapyvardziu vartotojas jau uzregistruotas',
+                msg: 'Vartotojas su tokiu username jau yra uzregistruotas',
             });
         }
 
     } catch (error) {
         return res.json({
             status: 'error',
-            data: 'Del',
+            msg: 'Del techniniu kliuciu nepavyko ivykdyti registracijos proceso, pabandykite veliau',
         });
     }
+
 
     try {
         const sql = 'INSERT INTO users (username, password) VALUES (?, ?);';
@@ -77,18 +77,18 @@ async function postRegister(req, res) {
         if (result[0].affectedRows !== 1) {
             return res.json({
                 status: 'error',
-                data: 'Uzregistruoti nepavyko, nes toks vartotojas jau yra',
+                msg: 'Uzregistruoti nepavyko, nes toks vartotojas jau yra',
             });
         }
     } catch (error) {
         return res.json({
             status: 'error',
-            data: 'Del techniniu kliuciu nepavyko ivykdyti registracijos proceso, pabandykite veliau',
+            msg: 'Del techniniu kliuciu nepavyko ivykdyti registracijos proceso, pabandykite veliau',
         });
     }
 
     return res.json({
         status: 'success',
-        data: 'Registracija buvo sekminga',
+        msg: 'Registracija buvo sekminga',
     });
 }
