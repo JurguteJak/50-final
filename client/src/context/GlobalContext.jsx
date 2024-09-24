@@ -1,4 +1,4 @@
-
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 
@@ -13,7 +13,7 @@ export function GlobalContextWrapper(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(initialContext.isLoggedIn);
 
     useEffect(() => {
-        fetch('http://localhost:5020/api/login', {
+        fetch('http://localhost:5040/api/login', {
             method: 'GET',
             credentials: 'include',
         })
